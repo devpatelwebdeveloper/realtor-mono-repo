@@ -4,20 +4,25 @@ import styles from "./Form.module.scss"
 import SingleUser from "../../2-molecules/SingleUser"
 
 export default function Form() {
-  const [inputFields, setInputFields] = useState([
-    { id: uuidv4(), 
+  const [details,setDetails]=useState({
+    propertyId: uuidv4(), 
+    propertyDetails:"",
+    inputFields:[
+        { id: uuidv4(), 
       firstName: "", 
       lastName: "" 
-    }
-  ]);
+     }
+    ]
+
+  })
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("InputFields", inputFields);
+    console.log("InputFields", details);
   };
 
   const handleChangeInput = (id, event) => {
-    const newInputFields = inputFields.map((i) => {
+    const newInputFields = details.inputFields.map((i) => {
       
       if (id === i.id) {
         i[event.target.name] = event.target.value;
@@ -25,47 +30,56 @@ export default function Form() {
       return i;
     });
 
-    setInputFields(newInputFields);
+    setDetails({
+      ...details,
+      inputFields:[...newInputFields]
+    });
   };
 
   const handleAddFields = (e) => {
     e.preventDefault();
-    setInputFields([
-      ...inputFields,
-      { id: uuidv4(), firstName: "", lastName: "" }
-    ]);
+ 
+    setDetails({
+      ...details,
+      inputFields:[...details.inputFields, { id: uuidv4(), firstName: "", lastName: "" }]
+    })
   };
 
   const handleRemoveFields = (id) => {
-    const values = [...inputFields];
+    const values = [...details.inputFields];
     values.splice(
       values.findIndex((value) => value.id === id),
       1
     );
-    setInputFields(values);
+    
+    setDetails({
+      ...details,
+      inputFields:[...values]
+    })
   };
 
   return (
     <>
       <form>
-        {inputFields.map((inputField) => (
+      <SingleUser name="property Name" value={details.propertyDetails} changeInput={(event)=>{setDetails({...details,propertyDetails:event.target.value})}}/>
+        {details.inputFields.map((inputField) => (
           <React.Fragment key={inputField.id}>
             <SingleUser name="first Name" value={inputField.firstName} changeInput={(event) => handleChangeInput(inputField.id, event)}/>
             <SingleUser name="last Name" value={inputField.lastName} changeInput={(event) => handleChangeInput(inputField.id, event)}/>
-            {/* <button
-              disabled={inputFields.length === 1}
+             <button
+              disabled={details.inputFields.length === 1}
               onClick={() => handleRemoveFields(inputField.id)}
             >
               Remove
             </button>
-            <button onClick={handleAddFields}>Add another</button> */}
+            <button onClick={handleAddFields}>Add another</button>
             <hr />
           </React.Fragment>
         ))}
         <br />
         <button type="submit" onClick={handleSubmit}>
           Send
-        </button>
+        </button> 
       </form>
     </>
   );
