@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from "./SingleUsers.module.scss"
 
 export default function SingleUser({name,value,changeInput}) {
     function camelize(str) {
@@ -11,9 +12,9 @@ export default function SingleUser({name,value,changeInput}) {
     const inputName=camelize(name)
     return (
         <div>
-            <label htmlFor={labelName} className="label">{name}</label>
+            <label htmlFor={labelName} className={styles.label}>{name}</label>
                 <input
-                className="input"
+                className={styles.input}
                   type="text"
                   name={inputName}
                   value={value}

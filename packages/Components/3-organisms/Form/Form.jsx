@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import styles from "./Form.module.scss"
+import Button from "../../1-atoms/Button"
 import SingleUser from "../../2-molecules/SingleUser"
 
 export default function Form() {
@@ -62,24 +62,24 @@ export default function Form() {
     <>
       <form>
       <SingleUser name="property Name" value={details.propertyDetails} changeInput={(event)=>{setDetails({...details,propertyDetails:event.target.value})}}/>
-        {details.inputFields.map((inputField) => (
+        {details.inputFields.map((inputField) =>(
           <React.Fragment key={inputField.id}>
+            <hr />
             <SingleUser name="first Name" value={inputField.firstName} changeInput={(event) => handleChangeInput(inputField.id, event)}/>
             <SingleUser name="last Name" value={inputField.lastName} changeInput={(event) => handleChangeInput(inputField.id, event)}/>
-             <button
-              disabled={details.inputFields.length === 1}
+             <Button
+              disabled={details.inputFields.length === 1&&true}
               onClick={() => handleRemoveFields(inputField.id)}
             >
               Remove
-            </button>
-            <button onClick={handleAddFields}>Add another</button>
-            <hr />
-          </React.Fragment>
-        ))}
+            </Button>
+            <Button onClick={handleAddFields}>Add another</Button>
+          </React.Fragment>)
+        )}
         <br />
-        <button type="submit" onClick={handleSubmit}>
+        <Button type="submit" onClick={handleSubmit}>
           Send
-        </button> 
+        </Button> 
       </form>
     </>
   );
