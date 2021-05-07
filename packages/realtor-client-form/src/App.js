@@ -1,10 +1,10 @@
 import "./styles.scss";
-import { Button, Form } from "@realtor/components";
+import { Button, Form, Header } from "@realtor/components";
 
 function App() {
   return (
     <div className="App">
-      <p>Main test App</p>
+      <Header />
       <Form />
     </div>
   );
