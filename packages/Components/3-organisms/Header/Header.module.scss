@@ -7,13 +7,29 @@
   padding: 0 20px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .Content {
-  flex: 8 0 auto;
+  padding: 20px;
+}
+.Heading {
+  font-size: 2.75rem;
+  line-height: 3rem;
+  font-weight: 700;
+  letter-spacing: normal;
+  padding-bottom: 20px;
+  sup {
+    font-size: 2rem;
+  }
+}
+.SubHeading {
+  font-size: 1.75rem;
+  line-height: 2rem;
+  font-weight: 700;
+  letter-spacing: normal;
 }
 .Image {
-  flex: 2 0 auto;
   align-items: center;
 }
 .HeadShot {

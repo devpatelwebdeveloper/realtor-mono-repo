@@ -1,19 +1,19 @@
 {
-    "name": "@realtor/components",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "module": "index.js",
-    "scripts": {
-      "test": "echo testing components"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "react": "^17.0.2",
-      "react-dom": "^17.0.2",
-      "node-sass": "^5.0.0",
-      "sass-loader": "^11.0.1"
-    }
+  "name": "@realtor/components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "module": "index.js",
+  "scripts": {
+    "test": "echo testing components"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^5.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass-loader": "^11.0.1"
   }
+}
